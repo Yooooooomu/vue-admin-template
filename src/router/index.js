@@ -158,6 +158,31 @@ export const constantRoutes = [
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
+  }
+]
+
+export const asyncRoutes = [
+  {
+    path: '/test',
+    component: Layout,
+    redirect: '/test/a',
+    alwaysShow: true,
+    name: 'J1',
+    meta: {
+      title: 'test',
+      roles: ['editor']
+    },
+    children: [
+      {
+        path: 'a',
+        component: () => import('@/views/test/a/index'),
+        name: 'J1-1',
+        meta: {
+          title: 'test-a',
+          roles: ['editor'] // or you can only set roles in sub nav
+        }
+      }
+    ]
   },
 
   // 404 page must be placed at the end !!!
